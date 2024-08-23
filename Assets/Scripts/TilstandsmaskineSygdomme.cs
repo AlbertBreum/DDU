@@ -27,7 +27,6 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
     void Start()
     {
         currentState = State.Healthy;
-        immune = false;
         immunityTime = 5; //5 dages immunitet, kan altid ændres
     }
 
@@ -96,6 +95,7 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
     {
         //FollowDailyRoutine();
         //Dekrementer immunitetstiden
+        immunityTime--;
 
         if (true)
         {
@@ -111,13 +111,12 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
 
         if (true)
         {
+            currentState = State.Immune;
             activeDisease = Disease.None;
-            currentState = State.Immune
         }
         
         if (false)
         {
-            Destroy GameObject;
         }
 
     }
