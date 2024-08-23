@@ -14,10 +14,13 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
 
     public enum Disease
     {
+        None,
         Covid,
         Plaque,
         Smallpox
     }
+
+    Disease activeDisease;
 
     public State currentState;
     
@@ -56,7 +59,7 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
     {
         //FollowDailyroutine
 
-        switch(Disease)
+        switch(activeDisease)
         {
             case Disease.Covid:
                 //Indsæt kode, der gør npc'en i stand til at smitte andre
@@ -67,11 +70,13 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
             case Disease.Smallpox:
                 //Indsæt kode, der gør npc'en i stand til at smitte andre
                 break;
+            default:
+                break;
         }
     }
 
     void Infected() { //Er syg og følger ikke en normal hverdag
-        switch(Disease)
+        switch(activeDisease)
         {
             case Disease.Covid:
                 Covid();
@@ -82,28 +87,33 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
             case Disease.Smallpox:
                 Smallpox();
                 break;
+            default:
+                break;
         }
-
     }
 
     void Immune() //Skal have en normal hverdag
     {
-
+        //FollowDailyRoutine();
+        //Dekrementer immunitetstiden
     }
 
     void Covid()
     {
-
+        //Kør koden karakteristisk for covid
+        //Dekrementer sygdomstiden
     }
 
     void Plaque()
     {
-
+        //Kør koden karakteristisk for pesten
+        //Dekrementer sygdomstiden
     }
 
     void Smallpox()
     {
-
+        //Kør koden karakteristisk for kopper
+        //Dekrementer sygdomstiden
     }
 
 }
