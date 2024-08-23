@@ -21,14 +21,14 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
     }
 
     Disease activeDisease;
-
-    public State currentState;
-    
-    
+    State currentState;
+    int immunityTime;
     // Start is called before the first frame update
     void Start()
     {
         currentState = State.Healthy;
+        immune = false;
+        immunityTime = 5; //5 dages immunitet, kan altid ændres
     }
 
     // Update is called once per frame
@@ -92,16 +92,34 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
         }
     }
 
-    void Immune() //Skal have en normal hverdag
+    void Immune() //Skal have en normal hverdag. Når man er immun, er man immun overfor SAMTLIGE sygdomme!
     {
         //FollowDailyRoutine();
         //Dekrementer immunitetstiden
+
+        if (true)
+        {
+            currentState = State.Healthy;
+            
+        }
     }
 
     void Covid()
     {
         //Kør koden karakteristisk for covid
         //Dekrementer sygdomstiden
+
+        if (true)
+        {
+            activeDisease = Disease.None;
+            currentState = State.Immune
+        }
+        
+        if (false)
+        {
+            Destroy GameObject;
+        }
+
     }
 
     void Plaque()
@@ -115,5 +133,4 @@ public class TilstandsmaskineSygdomme : MonoBehaviour
         //Kør koden karakteristisk for kopper
         //Dekrementer sygdomstiden
     }
-
 }
