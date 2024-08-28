@@ -872,8 +872,8 @@ GameObject:
   - component: {fileID: 1611140692}
   - component: {fileID: 1611140691}
   - component: {fileID: 1611140690}
-  - component: {fileID: 1611140695}
   - component: {fileID: 1611140696}
+  - component: {fileID: 1611140697}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -991,23 +991,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611140695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611140689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa4277d619b864782e5d9518b6507b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1611140694}
-  points:
-  - {fileID: 345631051}
-  - {fileID: 670661900}
-  - {fileID: 895663167}
 --- !u!54 &1611140696
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1035,6 +1018,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1611140697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611140689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f992dadfefe8b4eb2c575eca176db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1611140694}
+  points:
+  - {fileID: 345631051}
+  - {fileID: 670661900}
+  - {fileID: 895663167}
+  CurrentActivity: 0
 --- !u!1 &1702975942
 GameObject:
   m_ObjectHideFlags: 0
