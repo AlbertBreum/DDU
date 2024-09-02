@@ -6,13 +6,17 @@ using UnityEngine;
 public class Covid : MonoBehaviour
 {
     
-    private List<GameObject> nearbyHumans = new List<GameObject>(); //Opretter en liste til at holde styr på mennesker indenfor smitteradius
+    private List<Human> nearbyHumans = new List<Human>(); //Opretter en liste til at holde styr på mennesker indenfor smitteradius
     public float radiusOfInfection;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject g1 = new GameObject("g1");
+        Human human = new Human();
+        g1.AddComponent<Human>();
+
+        g1.GetComponent<Human>().Age = 10;
     }
 
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
@@ -20,7 +24,7 @@ public class Covid : MonoBehaviour
         Debug.Log("enter");
         if (other.gameObject.tag == "human")
         {
-            nearbyHumans.Add(other.gameObject);
+            nearbyHumans.Add(other.Human);
         }
     }
 
@@ -49,7 +53,8 @@ public class Covid : MonoBehaviour
             float r = 5.0f;
             if (num > InfectionChance(r))
             {
-                //human.Disease = Covid;
+                human.activeDisease = Human.Disease.Covid;
+                
             }
 
 
