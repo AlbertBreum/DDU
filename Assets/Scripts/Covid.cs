@@ -26,7 +26,7 @@ public class Covid : MonoBehaviour
 
     private void OnTriggerExit(Collider other) //Detekterer, at et menneske kommer udenfor en given radius
     {
-        if (other.gameObject.tag == "human")
+        if (other.gameObject.tag.Equals("human"))
         {
             nearbyHumans.Remove(other.gameObject);
         }
@@ -43,12 +43,13 @@ public class Covid : MonoBehaviour
 
         foreach (var human in nearbyHumans) 
         {
+            Debug.Log(human);
             Debug.Log("Hello");
             float num = Random.Range(0f, 1f);
             float r = 5.0f;
             if (num > InfectionChance(r))
             {
-                human.Disease = Covid;
+                //human.Disease = Covid;
             }
 
 

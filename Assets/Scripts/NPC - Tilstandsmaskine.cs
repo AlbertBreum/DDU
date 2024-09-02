@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 
-public class Human : MonoBehaviour
+public class NPCBehavior : MonoBehaviour
 {
     public Transform player;
     private NavMeshAgent agent;
