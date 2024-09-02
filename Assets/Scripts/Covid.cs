@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Math;
+
 
 public class Covid : MonoBehaviour
 {
@@ -36,15 +36,16 @@ public class Covid : MonoBehaviour
     {
         float InfectionChance(float r) {
             float risk;
-            risk = Math.exp(-Math.Pow(r, 2)/radiusOfInfection);
+            risk = Mathf.Exp(-Mathf.Pow(r, 2)/radiusOfInfection);
             return risk;
 
         }
 
-        foreach (human in nearbyHumans) {
-            Console.WriteLine("Hello");
+        foreach (var human in nearbyHumans) 
+        {
+            Debug.Log("Hello");
             float num = Random.Range(0f, 1f);
-            float r = 5.0;
+            float r = 5.0f;
             if (num > InfectionChance(r))
             {
                 human.Disease = Covid;
