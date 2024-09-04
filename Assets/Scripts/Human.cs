@@ -26,7 +26,7 @@ public enum Gender
 
 public class Human : MonoBehaviour
 {
-    private List<Human> nearbyHumans = new List<Human>(); //Opretter en liste til at holde styr på mennesker indenfor smitteradius
+    public List<Human> nearbyHumans = new List<Human>(); //Opretter en liste til at holde styr på mennesker indenfor smitteradius
     public float radiusOfInfection;
     public int wealth = 10;
     public Disease activeDisease;
