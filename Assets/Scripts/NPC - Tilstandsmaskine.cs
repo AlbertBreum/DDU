@@ -14,6 +14,7 @@ public class NPCBehavior : MonoBehaviour
     private float stoppingDistance = 0.3f;
     public List<Transform> points = new List<Transform>();
     private int posIndex = 0;
+    public DagNatCyclus timer;
 
     bool IsWorking = false;
     bool IsFree = false;
@@ -24,8 +25,10 @@ public class NPCBehavior : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        Invoke(nameof(moveOnTime), 4f);
+        Invoke(nameof(moveOnTime), 0f);
+        timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
     }
+
     
     public enum Activity
     {
@@ -37,7 +40,12 @@ public class NPCBehavior : MonoBehaviour
     public Activity CurrentActivity;
     private void Update()
     {
-        switch(CurrentActivity)
+        if (agent.remainingDistance <= stoppingDistance && !agent.pathPending)
+        {
+            agent.isStopped = true;
+            //Debug.Log("agent arrived!!");
+        }
+        switch (CurrentActivity)
         {
          case Activity.Work:
                 Work();
@@ -68,13 +76,15 @@ public class NPCBehavior : MonoBehaviour
     }
     void moveOnTime()
     {
-        Debug.Log("hello");
-        if (IsWorking == true)
+
+        Debug.Log("yipeee" + points[posIndex]);
+        agent.SetDestination(points[posIndex].position);
+        agent.isStopped = false;
+        /*Invoke(nameof(moveOnTime), 4f); //call again in 4 seconds
+        posIndex = (posIndex + 1) % (points.Count);*/
+        if (timer.currentTimeOfDay >= 7f)
         {
-            Debug.Log(points[posIndex]);
-            agent.SetDestination(points[posIndex].position);
-            agent.isStopped = false;
-            Invoke(nameof(moveOnTime), 4f); //call again in 4 seconds
+            Debug.Log(timer.currentTimeOfDay);
             posIndex = (posIndex + 1) % (points.Count);
         }
     }
