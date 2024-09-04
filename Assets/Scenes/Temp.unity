@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 345631050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.99, y: 0.383, z: 10.7}
+  m_LocalPosition: {x: 33, y: 0.383, z: 10.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -842,7 +842,7 @@ Transform:
   m_GameObject: {fileID: 670661899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.56, y: 6.158025, z: 1.54}
+  m_LocalPosition: {x: -1.01, y: 6.158025, z: 7.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1221,7 +1221,7 @@ Transform:
   m_GameObject: {fileID: 895663166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.02, y: 6.158025, z: -2.98}
+  m_LocalPosition: {x: 13.02, y: 6.158025, z: -9.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1649,7 +1649,7 @@ Transform:
   m_GameObject: {fileID: 1540729580}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5384914, y: 0.4469794, z: -0.5479704, w: 0.45821923}
-  m_LocalPosition: {x: 15.97, y: 23.55, z: 1.29}
+  m_LocalPosition: {x: 21, y: 50.8, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1892,7 +1892,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7048dfbf027cc47419f97a06e9c7cb15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1981,6 +1981,7 @@ MonoBehaviour:
   - {fileID: 345631051}
   - {fileID: 670661900}
   - {fileID: 895663167}
+  timer: {fileID: 1652909507}
   CurrentActivity: 0
 --- !u!114 &1611140698
 MonoBehaviour:
@@ -1994,6 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12be223924b5804ab7b4322818b4fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nearbyHumans: []
   radiusOfInfection: 2
   wealth: 10
   activeDisease: 1
@@ -2010,7 +2012,7 @@ GameObject:
   - component: {fileID: 1652909508}
   - component: {fileID: 1652909507}
   m_Layer: 0
-  m_Name: Test
+  m_Name: CyklusController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,8 +2031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunLight: {fileID: 786870648}
-  dayDuration: 30
-  nightDuration: 12
+  dayDuration: 300
+  nightDuration: 120
   dayColor: {r: 0.99487174, g: 1, b: 0.88113207, a: 1}
   nightColor: {r: 0, g: 0.008031368, b: 0.5, a: 1}
   maxDayIntensity: 2
@@ -2211,6 +2213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12be223924b5804ab7b4322818b4fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nearbyHumans: []
   radiusOfInfection: 2
   wealth: 10
   activeDisease: 1
@@ -2233,6 +2236,7 @@ MonoBehaviour:
   - {fileID: 345631051}
   - {fileID: 670661900}
   - {fileID: 895663167}
+  timer: {fileID: 1652909507}
   CurrentActivity: 0
 --- !u!54 &1893793729
 Rigidbody:
@@ -2326,7 +2330,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7048dfbf027cc47419f97a06e9c7cb15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

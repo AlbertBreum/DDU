@@ -15,7 +15,7 @@ public class Tid : MonoBehaviour
         if(TimerIsRunning == true)
         {
             TimeElapsed = TimeSinceStart += Time.deltaTime;
-            Debug.Log(TimeElapsed % 10);
+            //Debug.Log(TimeElapsed % 10);
         }
     }
 }
