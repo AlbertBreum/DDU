@@ -14,7 +14,7 @@ public class NPCBehavior : MonoBehaviour
     private float stoppingDistance = 0.3f;
     public List<Transform> points = new List<Transform>();
     private int posIndex = 0;
-    public DagNatCyclus timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
+    public DagNatCyclus timer;
 
     bool IsWorking = false;
     bool IsFree = false;
@@ -24,6 +24,7 @@ public class NPCBehavior : MonoBehaviour
 
     void Start()
     {
+        timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
     }
