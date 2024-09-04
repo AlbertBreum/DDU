@@ -28,7 +28,7 @@ public class DagNatCyclus : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(currentTimeOfDay);
+        //Debug.Log(currentTimeOfDay);
         // Opdaterer tiden i cyklussen
         currentTimeOfDay += Time.deltaTime;
 
