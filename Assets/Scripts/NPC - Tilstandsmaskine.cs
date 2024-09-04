@@ -51,8 +51,6 @@ public class NPCBehavior : MonoBehaviour
          case Activity.Infected:
                 Infected();
                 break;
-
-
         }
     }
     
