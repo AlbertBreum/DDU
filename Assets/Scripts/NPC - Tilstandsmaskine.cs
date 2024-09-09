@@ -40,6 +40,7 @@ public class NPCBehavior : MonoBehaviour
     public Activity CurrentActivity;
     private void Update()
     {
+        moveOnTime();
         if (agent.remainingDistance <= stoppingDistance && !agent.pathPending)
         {
             agent.isStopped = true;
@@ -68,23 +69,27 @@ public class NPCBehavior : MonoBehaviour
         if(IsWorking == false)
         {
             IsWorking = true;
-            moveOnTime();
             
         }
     }
     void moveOnTime()
     {
 
-        Debug.Log("yipeee" + points[posIndex]);
-        agent.SetDestination(points[posIndex].position);
-        agent.isStopped = false;
-        /*Invoke(nameof(moveOnTime), 4f); //call again in 4 seconds
-        posIndex = (posIndex + 1) % (points.Count);*/
-        if (timer.currentTimeOfDay >= 7f)
+        Debug.Log("Den aktuelle tid: "+timer.currentTimeOfDay);
+        if (timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 7f)
         {
-            Debug.Log(timer.currentTimeOfDay);
-            posIndex = (posIndex + 1) % (points.Count);
+            agent.SetDestination(points[0].position);
         }
+        else if (timer.currentTimeOfDay >= 7 && timer.currentTimeOfDay < 15)
+        {
+            agent.SetDestination(points[1].position);
+        }
+        else if (timer.currentTimeOfDay >= 15 && timer.currentTimeOfDay < 24)
+        {
+            agent.SetDestination(points[2].position);
+        }
+        agent.isStopped = false;
+
     }
     void Free()
     {
