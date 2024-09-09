@@ -36,15 +36,17 @@ public class Human : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
-        Debug.Log("enter");
+        //Debug.Log("enter");
         if (other.gameObject.tag == "human")
         {
             nearbyHumans.Add(other.GetComponent<Human>());
+            //Debug.Log("ADDED HUMAN");
         }
     }
 
     private void OnTriggerExit(Collider other) //Detekterer, at et menneske kommer udenfor en given radius
     {
+        //Debug.Log("Exit");
         if (other.gameObject.tag.Equals("human"))
         {
             nearbyHumans.Remove(other.GetComponent<Human>());
@@ -64,7 +66,7 @@ public class Human : MonoBehaviour
 
         }
 
-        foreach (var human in nearbyHumans)
+        foreach (Human human in nearbyHumans)
         {
             Debug.Log(human);
             Debug.Log("Hello");
