@@ -38,6 +38,26 @@ public class NPCBehavior : MonoBehaviour
         Infected
     }
     public Activity CurrentActivity;
+    void moveOnTime()
+    {
+
+        Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
+        if (timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 7f)
+        {
+            //agent.SetDestination(points[0].position);
+            Work();
+        }
+        else if (timer.currentTimeOfDay >= 7 && timer.currentTimeOfDay < 15)
+        {
+            agent.SetDestination(points[1].position);
+        }
+        else if (timer.currentTimeOfDay >= 15 && timer.currentTimeOfDay < 24)
+        {
+            agent.SetDestination(points[2].position);
+        }
+        agent.isStopped = false;
+
+    }
     private void Update()
     {
         moveOnTime();
@@ -68,29 +88,12 @@ public class NPCBehavior : MonoBehaviour
         // her skal NPC'erne kunne finde deres vej til arbejde
         if(IsWorking == false)
         {
-            IsWorking = true;
-            
-        }
-    }
-    void moveOnTime()
-    {
-
-        Debug.Log("Den aktuelle tid: "+timer.currentTimeOfDay);
-        if (timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 7f)
-        {
             agent.SetDestination(points[0].position);
-        }
-        else if (timer.currentTimeOfDay >= 7 && timer.currentTimeOfDay < 15)
-        {
-            agent.SetDestination(points[1].position);
-        }
-        else if (timer.currentTimeOfDay >= 15 && timer.currentTimeOfDay < 24)
-        {
-            agent.SetDestination(points[2].position);
-        }
-        agent.isStopped = false;
 
+
+        }
     }
+    
     void Free()
     {
         if(IsFree == true)
