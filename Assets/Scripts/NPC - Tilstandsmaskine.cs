@@ -20,6 +20,8 @@ public class NPCBehavior : MonoBehaviour
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
+    ParticleSystem particlesystem;
+
     // Start is called before the first frame update
 
     void Start()
@@ -27,6 +29,7 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
+        particlesystem = GetComponent<Human>().particles;
     }
 
     
@@ -42,21 +45,23 @@ public class NPCBehavior : MonoBehaviour
     {
 
         Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
-        if (timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 7f)
+        if (timer.currentTimeOfDay <= 40f && timer.currentTimeOfDay < 180f)
         {
             //agent.SetDestination(points[0].position);
             Work();
         }
-        else if (timer.currentTimeOfDay >= 7 && timer.currentTimeOfDay < 15)
+        else if (timer.currentTimeOfDay >= 180 && timer.currentTimeOfDay < 300)
         {
-            agent.SetDestination(points[1].position);
+            //agent.SetDestination(points[1].position);
+            Free();
         }
-        else if (timer.currentTimeOfDay >= 15 && timer.currentTimeOfDay < 24)
+        else if (timer.currentTimeOfDay >= 300 && timer.currentTimeOfDay < 420 || timer.currentTimeOfDay >= 0 && timer.currentTimeOfDay < 40f)
         {
-            agent.SetDestination(points[2].position);
+            //agent.SetDestination(points[2].position);
+            Asleep();
         }
         agent.isStopped = false;
-
+        
     }
     private void Update()
     {
@@ -86,7 +91,7 @@ public class NPCBehavior : MonoBehaviour
     void Work()
     {
         // her skal NPC'erne kunne finde deres vej til arbejde
-        if(IsWorking == false)
+        if(!IsWorking)
         {
             agent.SetDestination(points[0].position);
 
@@ -96,19 +101,28 @@ public class NPCBehavior : MonoBehaviour
     
     void Free()
     {
-        if(IsFree == true)
+        if(IsFree)
         {
             Debug.Log("Off work");
+            agent.SetDestination(points[1].position);
         }
         // Her skal NPC'erne kunne finde fra deres arbejde hen til at sted hvor de kan slappe af
         
     }
     void Asleep()
     {
+        if(IsAsleep)
+        {
+            agent.SetDestination(points[2].position);
+        }
         // Her skal NPC'erne kunne finde hjem til deres hus og bliver der indtil det bliver dag igen
     }
     void Infected()
     {
+        if(Isinfected)
+        {
+
+        }
         // Her skal NPC'en forsætte sin normale hverdag men med mulighed for´at smitte andre omkring sig
     }
 }

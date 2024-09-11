@@ -33,6 +33,7 @@ public class Human : MonoBehaviour
     public State currentState;
     public int Age;
 
+    public ParticleSystem particles;
 
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
