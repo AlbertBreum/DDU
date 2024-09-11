@@ -45,10 +45,12 @@ public class NPCBehavior : MonoBehaviour
     {
 
         Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
-        if (timer.currentTimeOfDay <= 40f && timer.currentTimeOfDay < 180f)
+        if (timer.currentTimeOfDay >= 40f && timer.currentTimeOfDay < 180f)
         {
             //agent.SetDestination(points[0].position);
             Work();
+            particlesystem.Stop();
+            Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 180 && timer.currentTimeOfDay < 300)
         {
@@ -59,6 +61,8 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[2].position);
             Asleep();
+            particlesystem.Play();
+            Debug.Log("Started particles");
         }
         agent.isStopped = false;
         
