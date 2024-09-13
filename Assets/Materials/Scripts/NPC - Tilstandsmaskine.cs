@@ -16,11 +16,13 @@ public class NPCBehavior : MonoBehaviour
     private int posIndex = 0;
     public DagNatCyclus timer;
 
+
     bool IsWorking = false;
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
     ParticleSystem particlesystem;
+    
 
     // Start is called before the first frame update
 
@@ -29,7 +31,8 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
-        particlesystem = GetComponent<Human>().particles;
+        particlesystem = GetComponent<Human>().covid;
+        StartCoroutine("DiseaseSelection");
     }
 
     
@@ -44,7 +47,7 @@ public class NPCBehavior : MonoBehaviour
     void moveOnTime()
     {
 
-        Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
+        //Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
         if (timer.currentTimeOfDay >= 40f && timer.currentTimeOfDay < 180f)
         {
             //agent.SetDestination(points[0].position);
@@ -128,5 +131,20 @@ public class NPCBehavior : MonoBehaviour
 
         }
         // Her skal NPC'en forsætte sin normale hverdag men med mulighed for´at smitte andre omkring sig
+    }
+    IEnumerator DiseaseSelection()
+    {
+        while (true)
+        {
+            //Skriv kode her
+
+
+
+
+
+
+
+            yield return new WaitForSeconds(1);
+        }
     }
 }

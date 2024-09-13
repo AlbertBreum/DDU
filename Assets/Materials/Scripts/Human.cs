@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -38,6 +39,11 @@ public class Human : MonoBehaviour
     public ParticleSystem Plague;
     public ParticleSystem Smallpox;
 
+
+    void Start()
+    {
+        //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
+    }
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
         //Debug.Log("enter");
@@ -75,6 +81,8 @@ public class Human : MonoBehaviour
             if (num > InfectionChance(r))
             {
                 human.activeDisease = anyDisease;
+                //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
+                Plague p = human.AddComponent<Plague>();
             }
         }
     }
