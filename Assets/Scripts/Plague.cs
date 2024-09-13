@@ -13,14 +13,14 @@ public class Plague : MonoBehaviour
     {
         plagueParticles = GetComponent<Human>().Plague;
         plagueParticles.Play();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         plagueTime += Time.deltaTime;
-
+        CureDisease();
+        Die();
     }
 
     void CureDisease()
@@ -28,6 +28,7 @@ public class Plague : MonoBehaviour
         float n = Random.Range(1, 100000);
         if (n <= 2*plagueTime)
         {
+            plagueParticles.Stop();
             infectedHuman.activeDisease = Disease.None;
             infectedHuman.currentState = State.Incubation;
         }
@@ -38,8 +39,8 @@ public class Plague : MonoBehaviour
         float n = Random.Range(1, 100000);
         if (n <= 120 + plagueTime)
         {
+            plagueParticles.Stop();
             Destroy(infectedHuman);
         }
     }
-
 }

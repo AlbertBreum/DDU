@@ -20,7 +20,7 @@ public class NPCBehavior : MonoBehaviour
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
-    ParticleSystem particlesystem;
+    ParticleSystem covidParticles;
 
     // Start is called before the first frame update
 
@@ -29,9 +29,8 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
-        particlesystem = GetComponent<Human>().particles;
+        covidParticles = GetComponent<Human>().covid;
     }
-
     
     public enum Activity
     {
@@ -49,7 +48,7 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[0].position);
             Work();
-            particlesystem.Stop();
+            covidParticles.Stop();
             Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 180 && timer.currentTimeOfDay < 300)
@@ -61,7 +60,7 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[2].position);
             Asleep();
-            particlesystem.Play();
+            covidParticles.Play();
             Debug.Log("Started particles");
         }
         agent.isStopped = false;
