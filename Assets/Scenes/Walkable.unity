@@ -123,6 +123,76 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &703648244
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.007893
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.445335
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186558e69e0fe47b18a1b83570e5c95c,
+        type: 3}
+      propertyPath: m_Name
+      value: Kirke
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 9141816029861474070, guid: 186558e69e0fe47b18a1b83570e5c95c, type: 3}
+    - {fileID: 8416272007918961125, guid: 186558e69e0fe47b18a1b83570e5c95c, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 186558e69e0fe47b18a1b83570e5c95c, type: 3}
 --- !u!1 &1618082440
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,3 +684,4 @@ SceneRoots:
   - {fileID: 1618082443}
   - {fileID: 1867054510}
   - {fileID: 1647474875}
+  - {fileID: 703648244}
