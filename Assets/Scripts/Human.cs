@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 
@@ -33,7 +34,9 @@ public class Human : MonoBehaviour
     public State currentState;
     public int Age;
 
-    public ParticleSystem particles;
+    public ParticleSystem covid;
+    public ParticleSystem Plague;
+    public ParticleSystem Smallpox;
 
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
@@ -53,39 +56,31 @@ public class Human : MonoBehaviour
             nearbyHumans.Remove(other.GetComponent<Human>());
         }
     }
-  
 
-   
-
-    void InfectOthers()
+    void InfectOthers(Disease anyDisease)
     {
         float InfectionChance(float r)
         {
             float risk;
             risk = Mathf.Exp(-Mathf.Pow(r, 2) / radiusOfInfection);
             return risk;
-
         }
 
         foreach (Human human in nearbyHumans)
         {
-            Debug.Log(human);
-            Debug.Log("Hello");
+            //Debug.Log(human);
+            //Debug.Log("Hello");
             float num = Random.Range(0f, 1f);
             float r = 5.0f;
             if (num > InfectionChance(r))
             {
-                human.activeDisease = Disease.Covid;
-
+                human.activeDisease = anyDisease;
             }
-
-
-
         }
-
-
-
     }
+
+
+
 
 
 }
