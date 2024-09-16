@@ -32,7 +32,6 @@ public class NPCBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
         particlesystem = GetComponent<Human>().covid;
-        StartCoroutine("DiseaseSelection");
     }
 
     
@@ -131,20 +130,5 @@ public class NPCBehavior : MonoBehaviour
 
         }
         // Her skal NPC'en forsætte sin normale hverdag men med mulighed for´at smitte andre omkring sig
-    }
-    IEnumerator DiseaseSelection()
-    {
-        while (true)
-        {
-            //Skriv kode her
-
-
-
-
-
-
-
-            yield return new WaitForSeconds(1);
-        }
     }
 }
