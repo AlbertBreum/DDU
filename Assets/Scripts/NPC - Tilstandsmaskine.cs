@@ -15,14 +15,15 @@ public class NPCBehavior : MonoBehaviour
     public List<Transform> points = new List<Transform>();
     private int posIndex = 0;
     public DagNatCyclus timer;
-
+    [Range(0, 100)] public float speed;
+    [Range(0, 500)] public float walkradius;
 
     bool IsWorking = false;
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
     ParticleSystem particlesystem;
-    
+
 
     // Start is called before the first frame update
 
@@ -31,9 +32,24 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
-        particlesystem = GetComponent<Human>().covid;
+        //particlesystem = GetComponent<Human>().covid;
+        if (agent != null)
+        {
+            agent.speed = speed;
+        }
     }
-
+    public Vector3 RandomNavMeshLocation()
+    {
+        Vector3 FinalPosition = Vector3.zero;
+        Vector3 RandomPostion = Random.insideUnitSphere * walkradius;
+        RandomPostion += transform.position;
+        if (NavMesh.SamplePosition(RandomPostion, out NavMeshHit Hit, walkradius, 1))
+        {
+            FinalPosition = Hit.position;
+        }
+        return (FinalPosition);
+    }
+    
     
     public enum Activity
     {
@@ -51,8 +67,8 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[0].position);
             Work();
-            particlesystem.Stop();
-            Debug.Log("Stopped particles");
+            //particlesystem.Stop();
+            //Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 180 && timer.currentTimeOfDay < 300)
         {
@@ -63,8 +79,8 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[2].position);
             Asleep();
-            particlesystem.Play();
-            Debug.Log("Started particles");
+            //particlesystem.Play();
+            //Debug.Log("Started particles");
         }
         agent.isStopped = false;
         
@@ -92,15 +108,19 @@ public class NPCBehavior : MonoBehaviour
                 Infected();
                 break;
         }
+       // if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
+        }
     }
     
     void Work()
     {
         // her skal NPC'erne kunne finde deres vej til arbejde
-        if(!IsWorking)
+        if(IsWorking == false)
         {
             agent.SetDestination(points[0].position);
-
+            Debug.Log("modtaget" + agent + points[0]);
 
         }
     }
