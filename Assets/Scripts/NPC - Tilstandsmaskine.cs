@@ -13,7 +13,7 @@ public class NPCBehavior : MonoBehaviour
     private NavMeshAgent agent;
     private float stoppingDistance = 0.3f;
     public List<Transform> points = new List<Transform>();
-    private int posIndex = 0;
+    //private int posIndex = 0;
     public DagNatCyclus timer;
     [Range(0, 100)] public float speed;
     [Range(0, 500)] public float walkradius;
@@ -62,7 +62,7 @@ public class NPCBehavior : MonoBehaviour
     void moveOnTime()
     {
 
-        //Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
+        Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
         if (timer.currentTimeOfDay >= 40f && timer.currentTimeOfDay < 180f)
         {
             //agent.SetDestination(points[0].position);
