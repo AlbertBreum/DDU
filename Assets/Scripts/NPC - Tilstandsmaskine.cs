@@ -62,26 +62,31 @@ public class NPCBehavior : MonoBehaviour
     void moveOnTime()
     {
 
-        Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
-        if (timer.currentTimeOfDay >= 40f && timer.currentTimeOfDay < 180f)
+        //Debug.Log("Den aktuelle tid: " + timer.currentTimeOfDay);
+        if (timer.currentTimeOfDay >= 4f && timer.currentTimeOfDay < 18f)
         {
             //agent.SetDestination(points[0].position);
-            Work();
+            CurrentActivity = Activity.Work;
             //particlesystem.Stop();
             //Debug.Log("Stopped particles");
+ 
         }
-        else if (timer.currentTimeOfDay >= 180 && timer.currentTimeOfDay < 300)
+        else if (timer.currentTimeOfDay >= 18f && timer.currentTimeOfDay < 30f)
         {
             //agent.SetDestination(points[1].position);
-            Free();
+            //Free();
+            CurrentActivity = Activity.Free;
+
         }
-        else if (timer.currentTimeOfDay >= 300 && timer.currentTimeOfDay < 420 || timer.currentTimeOfDay >= 0 && timer.currentTimeOfDay < 40f)
+       /* else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
         {
             //agent.SetDestination(points[2].position);
-            Asleep();
+            CurrentActivity = Activity.Asleep;
+            //Asleep();
             //particlesystem.Play();
             //Debug.Log("Started particles");
-        }
+        
+        }*/
         agent.isStopped = false;
         
     }
@@ -93,8 +98,10 @@ public class NPCBehavior : MonoBehaviour
             agent.isStopped = true;
             //Debug.Log("agent arrived!!");
         }
+        Debug.Log(CurrentActivity);
         switch (CurrentActivity)
         {
+            
          case Activity.Work:
                 Work();
                 break;
@@ -108,39 +115,29 @@ public class NPCBehavior : MonoBehaviour
                 Infected();
                 break;
         }
-       // if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
-        {
-            agent.SetDestination(RandomNavMeshLocation());
-        }
+       
     }
     
     void Work()
     {
         // her skal NPC'erne kunne finde deres vej til arbejde
-        if(IsWorking == false)
-        {
-            agent.SetDestination(points[0].position);
-            Debug.Log("modtaget" + agent + points[0]);
-
-        }
+        agent.SetDestination(points[0].position);
     }
     
     void Free()
     {
-        if(IsFree)
-        {
             Debug.Log("Off work");
             agent.SetDestination(points[1].position);
+        if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
         }
         // Her skal NPC'erne kunne finde fra deres arbejde hen til at sted hvor de kan slappe af
-        
+
     }
     void Asleep()
     {
-        if(IsAsleep)
-        {
-            agent.SetDestination(points[2].position);
-        }
+        agent.SetDestination(points[2].position);
         // Her skal NPC'erne kunne finde hjem til deres hus og bliver der indtil det bliver dag igen
     }
     void Infected()
