@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 345631050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: 0.383, z: 10.7}
+  m_LocalPosition: {x: 33, y: 0.383, z: 18.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11337,11 +11337,11 @@ Transform:
   m_GameObject: {fileID: 1540729580}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5384914, y: 0.4469794, z: -0.5479704, w: 0.45821923}
-  m_LocalPosition: {x: 4.29, y: 26.73, z: 1.14}
+  m_LocalPosition: {x: 4.29, y: 25.73, z: -2.0700002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1893793734}
   m_LocalEulerAnglesHint: {x: 100.46802, y: -263.53, z: -353.42902}
 --- !u!114 &1540729584
 MonoBehaviour:
@@ -11754,8 +11754,6 @@ MonoBehaviour:
   - {fileID: 670661900}
   - {fileID: 895663167}
   timer: {fileID: 1652909507}
-  speed: 0
-  walkradius: 0
   CurrentActivity: 0
 --- !u!54 &1893793729
 Rigidbody:
@@ -11893,6 +11891,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1156991351}
+  - {fileID: 1540729583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1893793735
@@ -12368,9 +12367,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
+      propertyPath: speed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
+        type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 1652909507}
+    - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
+        type: 3}
+      propertyPath: walkradius
+      value: 114
+      objectReference: {fileID: 0}
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
       propertyPath: points.Array.data[0]
@@ -12472,7 +12481,6 @@ SceneRoots:
   - {fileID: 1652909508}
   - {fileID: 1893793734}
   - {fileID: 536632225}
-  - {fileID: 1540729583}
   - {fileID: 1205790955}
   - {fileID: 761863301}
   - {fileID: 730370804}
