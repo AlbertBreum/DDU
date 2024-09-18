@@ -11512,7 +11512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 6484918735191078275, guid: 28d937bdb7d22094798a9c64516df314,
     type: 3}
-  numberOfNPCs: 100
+  numberOfNPCs: 0
   spawnAreaSize: 30
 --- !u!1 &1652909506
 GameObject:
@@ -11754,6 +11754,8 @@ MonoBehaviour:
   - {fileID: 670661900}
   - {fileID: 895663167}
   timer: {fileID: 1652909507}
+  speed: 0
+  walkradius: 0
   CurrentActivity: 0
 --- !u!54 &1893793729
 Rigidbody:
