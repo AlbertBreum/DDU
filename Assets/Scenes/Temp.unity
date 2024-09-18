@@ -842,7 +842,7 @@ Transform:
   m_GameObject: {fileID: 670661899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.01, y: 6.158025, z: 7.09}
+  m_LocalPosition: {x: -10.64, y: 0.3, z: 13.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11754,6 +11754,8 @@ MonoBehaviour:
   - {fileID: 670661900}
   - {fileID: 895663167}
   timer: {fileID: 1652909507}
+  speed: 5
+  walkradius: 100
   CurrentActivity: 0
 --- !u!54 &1893793729
 Rigidbody:
@@ -12368,7 +12370,7 @@ PrefabInstance:
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
       propertyPath: speed
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
@@ -12378,7 +12380,7 @@ PrefabInstance:
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
       propertyPath: walkradius
-      value: 114
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2598107123582035680, guid: 28d937bdb7d22094798a9c64516df314,
         type: 3}
