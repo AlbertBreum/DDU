@@ -11,12 +11,12 @@ public class NPCBehavior : MonoBehaviour
 {
     public Transform player;
     private NavMeshAgent agent;
-    private float stoppingDistance = 0.3f;
+    private float StoppingDistance = 0.8f;
     public List<Transform> points = new List<Transform>();
     //private int posIndex = 0;
     public DagNatCyclus timer;
     [Range(0, 100)] public float speed;
-    [Range(0, 500)] public float walkradius;
+    [Range(1, 500)] public float walkradius;
 
     bool IsWorking = false;
     bool IsFree = false;
@@ -93,12 +93,12 @@ public class NPCBehavior : MonoBehaviour
     private void Update()
     {
         moveOnTime();
-        if (agent.remainingDistance <= stoppingDistance && !agent.pathPending)
+        if (agent.remainingDistance <= StoppingDistance && !agent.pathPending)
         {
             agent.isStopped = true;
             //Debug.Log("agent arrived!!");
         }
-        Debug.Log(CurrentActivity);
+        //Debug.Log(CurrentActivity);
         switch (CurrentActivity)
         {
             
@@ -126,11 +126,18 @@ public class NPCBehavior : MonoBehaviour
     
     void Free()
     {
-            Debug.Log("Off work");
+            //Debug.Log("Off work");
+            //agent.SetDestination(points[1].position);
+        if(!IsFree)
+        {
             agent.SetDestination(points[1].position);
+            IsFree = true;
+            Debug.Log("Once");
+        }
         if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.SetDestination(RandomNavMeshLocation());
+            
         }
         // Her skal NPC'erne kunne finde fra deres arbejde hen til at sted hvor de kan slappe af
 
