@@ -22,7 +22,7 @@ public class NPCBehavior : MonoBehaviour
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
-    ParticleSystem particlesystem;
+    ParticleSystem covidParticles;
 
 
     // Start is called before the first frame update
@@ -69,7 +69,6 @@ public class NPCBehavior : MonoBehaviour
             CurrentActivity = Activity.Work;
             //particlesystem.Stop();
             //Debug.Log("Stopped particles");
- 
         }
         else if (timer.currentTimeOfDay >= 18f && timer.currentTimeOfDay < 30f)
         {
@@ -78,15 +77,14 @@ public class NPCBehavior : MonoBehaviour
             CurrentActivity = Activity.Free;
 
         }
-       /* else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
-        {
-            //agent.SetDestination(points[2].position);
-            CurrentActivity = Activity.Asleep;
-            //Asleep();
-            //particlesystem.Play();
-            //Debug.Log("Started particles");
-        
-        }*/
+         else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
+         {
+             //agent.SetDestination(points[2].position);
+             Asleep();
+             //particlesystem.Play();
+             Debug.Log("Started particles");
+             CurrentActivity = Activity.Asleep;
+         }
         agent.isStopped = false;
         
     }
@@ -138,6 +136,10 @@ public class NPCBehavior : MonoBehaviour
         {
             agent.SetDestination(RandomNavMeshLocation());
             
+        }
+        else if(agent.remainingDistance >= 25f)
+        {
+            agent.SetDestination(points[1].position);
         }
         // Her skal NPC'erne kunne finde fra deres arbejde hen til at sted hvor de kan slappe af
 
