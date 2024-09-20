@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Plague : MonoBehaviour
@@ -26,11 +27,12 @@ public class Plague : MonoBehaviour
     void CureDisease()
     {
         float n = Random.Range(1, 100000);
-        if (n <= 2*plagueTime)
+        if (n <= 5*plagueTime)
         {
             plagueParticles.Stop();
             infectedHuman.activeDisease = Disease.None;
             infectedHuman.currentState = State.Incubation;
+            
         }
     }
 
