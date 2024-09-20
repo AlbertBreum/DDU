@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6530,7 +6530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581071f4803366a4995e963268c45d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
+  npcPrefab: {fileID: 3296628467909873957, guid: 6e1e93d179b55494c9f7800f002bc90e,
     type: 3}
   numberOfNPCs: 10
   spawnRadius: 25
@@ -6543,7 +6543,7 @@ Transform:
   m_GameObject: {fileID: 1591080307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.2, y: 9.6, z: 5.5}
+  m_LocalPosition: {x: 30, y: 1, z: -30}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7251,7 +7251,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanTest
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2118841324441768784, guid: 84e998c83c08970409b3718ff6303625, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
