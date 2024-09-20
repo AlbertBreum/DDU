@@ -19,6 +19,7 @@ public class NPCSpawner : MonoBehaviour
     public int numberOfNPCs = 100;
     // Spawn radius
     public float spawnRadius = 10f;
+    int patientZero;
 
     void Start()
     {
@@ -30,6 +31,10 @@ public class NPCSpawner : MonoBehaviour
         npcPoints.Append(P2);*/
         agent = GetComponent<NavMeshAgent>();
         //points = GetComponent<Human>().Plague;
+        patientZero = Random.Range(0,numberOfNPCs);
+
+
+
     }
     public Vector3 RandomNavMeshLocation()
     {
@@ -58,6 +63,14 @@ public class NPCSpawner : MonoBehaviour
             // Eventuelle tilpasninger på de instancerede NPC'er kan foretages her
             newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
                                        // newNPC.poin
+
+            if (i == patientZero)
+            {
+                newNPC.AddComponent<Plague>();
+                Debug.Log("Patient zero: " + patientZero);
+            }
+
+
             /*if (agent != null || agent.remainingDistance < agent.stoppingDistance)
             {
                 agent.SetDestination(RandomNavMeshLocation());

@@ -67,7 +67,7 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[0].position);
             CurrentActivity = Activity.Work;
-            //particlesystem.Stop();
+            //plagueParticles.Start();
             //Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 18f && timer.currentTimeOfDay < 30f)
@@ -84,6 +84,7 @@ public class NPCBehavior : MonoBehaviour
              
              //Debug.Log("Started particles");
              CurrentActivity = Activity.Asleep;
+            //plagueParticles.Stop();
          }
         agent.isStopped = false;
         
