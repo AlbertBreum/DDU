@@ -17,7 +17,6 @@ public class NPCSpawner : MonoBehaviour
     public List<Transform> points = new List<Transform>();
     // Antal NPC'er du vil spawne
     public int numberOfNPCs = 100;
-
     // Spawn radius
     public float spawnRadius = 10f;
 
@@ -31,7 +30,7 @@ public class NPCSpawner : MonoBehaviour
         npcPoints.Append(P2);
         agent = GetComponent<NavMeshAgent>();
     }
-   /* public Vector3 RandomNavMeshLocation()
+    public Vector3 RandomNavMeshLocation()
     {
         Vector3 FinalPosition = Vector3.zero;
         Vector3 RandomPostion = Random.insideUnitSphere * walkradius;
@@ -41,7 +40,7 @@ public class NPCSpawner : MonoBehaviour
             FinalPosition = Hit.position;
         }
         return (FinalPosition);
-    }*/
+    }
 
     // Funktion til at spawne NPC'er
     void SpawnNPCs()
@@ -58,12 +57,12 @@ public class NPCSpawner : MonoBehaviour
             // Eventuelle tilpasninger på de instancerede NPC'er kan foretages her
             newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
                                        // newNPC.poin
-            //if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+            if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
             {
-                //agent.SetDestination(RandomNavMeshLocation());
+                agent.SetDestination(RandomNavMeshLocation());
 
             }
-            //else if (agent.remainingDistance >= 25f)
+            else if (agent.remainingDistance >= 25f)
             {
                 agent.SetDestination(points[1].position);
             }
