@@ -32,7 +32,7 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
-        plagueParticles = GetComponent<Human>().Plague;
+        //plagueParticles = GetComponent<Human>().Plague;
         if (agent != null)
         {
             agent.speed = speed;

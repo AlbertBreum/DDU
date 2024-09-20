@@ -10,7 +10,7 @@ public class NPCSpawner : MonoBehaviour
     // Reference til din NPC prefab
     public GameObject npcPrefab;
 
-    Vector3[] npcPoints;
+    //Vector3[] npcPoints;
     [Range(0, 100)] public float speed;
     [Range(1, 500)] public float walkradius;
     private NavMeshAgent agent;
@@ -23,12 +23,13 @@ public class NPCSpawner : MonoBehaviour
     void Start()
     {
         SpawnNPCs();
-        Vector3 P1 = new Vector3(1, 1, 1);
+        /*Vector3 P1 = new Vector3(1, 1, 1);
         Vector3 P2 = new Vector3(1, 2, 3);
 
         npcPoints.Append(P1);
-        npcPoints.Append(P2);
+        npcPoints.Append(P2);*/
         agent = GetComponent<NavMeshAgent>();
+        //points = GetComponent<Human>().Plague;
     }
     public Vector3 RandomNavMeshLocation()
     {
@@ -53,19 +54,19 @@ public class NPCSpawner : MonoBehaviour
 
             // Instantiér NPC ved den tilfældige position
             GameObject newNPC = Instantiate(npcPrefab, randomPosition, Quaternion.identity);
-
+            newNPC.GetComponent<NPCBehavior>().points = points;
             // Eventuelle tilpasninger på de instancerede NPC'er kan foretages her
             newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
                                        // newNPC.poin
-            if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+            /*if (agent != null || agent.remainingDistance < agent.stoppingDistance)
             {
                 agent.SetDestination(RandomNavMeshLocation());
 
             }
-            else if (agent.remainingDistance >= 25f)
+            else
             {
                 agent.SetDestination(points[1].position);
-            }
+            }*/
 
 
 
