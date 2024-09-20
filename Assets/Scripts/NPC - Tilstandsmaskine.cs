@@ -22,7 +22,7 @@ public class NPCBehavior : MonoBehaviour
     bool IsFree = false;
     bool IsAsleep = false;
     bool Isinfected = false;
-    ParticleSystem covidParticles;
+    ParticleSystem plagueParticles;
 
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class NPCBehavior : MonoBehaviour
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
-        //particlesystem = GetComponent<Human>().covid;
+        plagueParticles = GetComponent<Human>().Plague;
         if (agent != null)
         {
             agent.speed = speed;
@@ -80,9 +80,9 @@ public class NPCBehavior : MonoBehaviour
          else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
          {
              //agent.SetDestination(points[2].position);
-             Asleep();
-             //particlesystem.Play();
-             Debug.Log("Started particles");
+             //Asleep();
+             
+             //Debug.Log("Started particles");
              CurrentActivity = Activity.Asleep;
          }
         agent.isStopped = false;
@@ -153,7 +153,16 @@ public class NPCBehavior : MonoBehaviour
     {
         if(Isinfected)
         {
+            plagueParticles.Play();
+            if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                agent.SetDestination(RandomNavMeshLocation());
 
+            }
+            else if (agent.remainingDistance >= 25f)
+            {
+                agent.SetDestination(points[1].position);
+            }
         }
         // Her skal NPC'en forsætte sin normale hverdag men med mulighed for´at smitte andre omkring sig
     }

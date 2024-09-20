@@ -1,30 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
 {
-    // Variabel til at henvise til NPC prefab
+    // Reference til din NPC prefab
     public GameObject npcPrefab;
 
-    // Antallet af NPC'er, der skal spawnes
+    // Antal NPC'er du vil spawne
     public int numberOfNPCs = 100;
 
-    // Området, hvor NPC'er skal spawnes
-    public float spawnAreaSize = 10f;
+    // Spawn radius
+    public float spawnRadius = 10f;
 
     void Start()
     {
-        // Loop for at spawne alle NPC'erne
+        SpawnNPCs();
+    }
+
+    // Funktion til at spawne NPC'er
+    void SpawnNPCs()
+    {
         for (int i = 0; i < numberOfNPCs; i++)
         {
-            // Generer en tilfældig position inden for spawnområdet
-            Vector3 randomPosition = new Vector3(
-                Random.Range(-spawnAreaSize, spawnAreaSize), // X position
-                0,                                           // Y position (hvis det er 2D, sæt dette som 0)
-                Random.Range(-spawnAreaSize, spawnAreaSize)  // Z position
-            );
+            // Beregn en tilfældig position inden for en cirkel
+            Vector3 randomPosition = transform.position + Random.insideUnitSphere * spawnRadius;
+            randomPosition.y = 0; // Holder NPC'er på jorden, hvis du arbejder i 2D eller på en flad overflade
 
-            // Spawner NPC'en ved den tilfældige position
-            Instantiate(npcPrefab, randomPosition, Quaternion.identity);
+            // Instantiér NPC ved den tilfældige position
+            GameObject newNPC = Instantiate(npcPrefab, randomPosition, Quaternion.identity);
+
+            // Eventuelle tilpasninger på de instancerede NPC'er kan foretages her
+            newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
         }
     }
 }
