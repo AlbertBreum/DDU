@@ -66,9 +66,9 @@ public class NPCBehavior : MonoBehaviour
         if (timer.currentTimeOfDay >= 4f && timer.currentTimeOfDay < 18f)
         {
             //agent.SetDestination(points[0].position);
-            Work();
+            CurrentActivity = Activity.Work;
             //particlesystem.Stop();
-            Debug.Log("Stopped particles");
+            //Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 18f && timer.currentTimeOfDay < 30f)
         {
@@ -77,13 +77,14 @@ public class NPCBehavior : MonoBehaviour
             CurrentActivity = Activity.Free;
 
         }
-       /* else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
-        {
-            //agent.SetDestination(points[2].position);
-            Asleep();
-            particlesystem.Play();
-            Debug.Log("Started particles");
-        }*/
+         else if (timer.currentTimeOfDay >= 30f && timer.currentTimeOfDay < 42f || timer.currentTimeOfDay >= 0f && timer.currentTimeOfDay < 4f)
+         {
+             //agent.SetDestination(points[2].position);
+             Asleep();
+             //particlesystem.Play();
+             Debug.Log("Started particles");
+             CurrentActivity = Activity.Asleep;
+         }
         agent.isStopped = false;
         
     }
