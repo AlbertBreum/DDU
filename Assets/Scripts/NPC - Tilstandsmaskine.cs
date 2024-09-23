@@ -147,7 +147,11 @@ public class NPCBehavior : MonoBehaviour
     }
     void Asleep()
     {
-        agent.SetDestination(points[2].position);
+        if(!IsAsleep)
+        {
+            agent.SetDestination(points[2].position);
+        }
+       
         // Her skal NPC'erne kunne finde hjem til deres hus og bliver der indtil det bliver dag igen
     }
     void Infected()
