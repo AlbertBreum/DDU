@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -33,56 +35,60 @@ public class Human : MonoBehaviour
     public State currentState;
     public int Age;
 
+    public ParticleSystem covid;
+    public ParticleSystem Plague;
+    public ParticleSystem Smallpox;
 
+
+    void Start()
+    {
+        //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
+    }
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
-        Debug.Log("enter");
+        //Debug.Log("enter");
         if (other.gameObject.tag == "human")
         {
             nearbyHumans.Add(other.GetComponent<Human>());
+            //Debug.Log("ADDED HUMAN");
         }
     }
 
     private void OnTriggerExit(Collider other) //Detekterer, at et menneske kommer udenfor en given radius
     {
+        //Debug.Log("Exit");
         if (other.gameObject.tag.Equals("human"))
         {
             nearbyHumans.Remove(other.GetComponent<Human>());
         }
     }
-  
 
-   
-
-    void InfectOthers()
+    void InfectOthers(Disease anyDisease)
     {
         float InfectionChance(float r)
         {
             float risk;
             risk = Mathf.Exp(-Mathf.Pow(r, 2) / radiusOfInfection);
             return risk;
-
         }
 
-        foreach (var human in nearbyHumans)
+        foreach (Human human in nearbyHumans)
         {
-            Debug.Log(human);
-            Debug.Log("Hello");
+            //Debug.Log(human);
+            //Debug.Log("Hello");
             float num = Random.Range(0f, 1f);
             float r = 5.0f;
             if (num > InfectionChance(r))
             {
-                human.activeDisease = Disease.Covid;
-
+                human.activeDisease = anyDisease;
+                //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
+                Plague p = human.AddComponent<Plague>();
             }
-
-
-
         }
-
-
-
     }
+
+
+
 
 
 }
