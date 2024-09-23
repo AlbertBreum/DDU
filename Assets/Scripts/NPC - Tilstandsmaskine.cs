@@ -10,8 +10,8 @@ using static UnityEngine.GraphicsBuffer;
 public class NPCBehavior : MonoBehaviour
 {
     public Transform player;
-    private NavMeshAgent agent;
-    private float StoppingDistance = 0.8f;
+    public NavMeshAgent agent;
+    private float StoppingDistance = 2.8f;
     public List<Transform> points = new List<Transform>();
     //private int posIndex = 0;
     public DagNatCyclus timer;
@@ -120,7 +120,13 @@ public class NPCBehavior : MonoBehaviour
     void Work()
     {
         // her skal NPC'erne kunne finde deres vej til arbejde
-        agent.SetDestination(points[0].position);
+        //agent.SetDestination(points[0].position);
+        if (agent != null && agent.remainingDistance <= StoppingDistance)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
+        }
+        
+
     }
     
     void Free()
@@ -129,18 +135,23 @@ public class NPCBehavior : MonoBehaviour
             //agent.SetDestination(points[1].position);
         if(!IsFree)
         {
-            agent.SetDestination(points[1].position);
-            IsFree = true;
-            Debug.Log("Once");
+            if (agent != null && agent.remainingDistance <= StoppingDistance)
+            {
+                agent.SetDestination(RandomNavMeshLocation());
+                
+                Debug.Log("Once");
+            }
+            
+
         }
-        if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+        //if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
         {
-            agent.SetDestination(RandomNavMeshLocation());
+            //agent.SetDestination(RandomNavMeshLocation());
             
         }
-        else if(agent.remainingDistance >= 25f)
+        //else if(agent.remainingDistance >= 60f)
         {
-            agent.SetDestination(points[1].position);
+            //agent.SetDestination(points[1].position);
         }
         // Her skal NPC'erne kunne finde fra deres arbejde hen til at sted hvor de kan slappe af
 
@@ -149,7 +160,10 @@ public class NPCBehavior : MonoBehaviour
     {
         if(!IsAsleep)
         {
-            agent.SetDestination(points[2].position);
+            if (agent != null && agent.remainingDistance <= StoppingDistance)
+            {
+                agent.SetDestination(RandomNavMeshLocation());
+            }
         }
        
         // Her skal NPC'erne kunne finde hjem til deres hus og bliver der indtil det bliver dag igen
@@ -164,9 +178,9 @@ public class NPCBehavior : MonoBehaviour
                 agent.SetDestination(RandomNavMeshLocation());
 
             }
-            else if (agent.remainingDistance >= 25f)
+           // else if (agent.remainingDistance >= 25f)
             {
-                agent.SetDestination(points[1].position);
+                //agent.SetDestination(points[1].position);
             }
         }
         // Her skal NPC'en forsætte sin normale hverdag men med mulighed for´at smitte andre omkring sig

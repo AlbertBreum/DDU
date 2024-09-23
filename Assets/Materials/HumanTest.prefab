@@ -175,13 +175,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5869943798296996952}
+  agent: {fileID: 4018458301123775943}
   points:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   timer: {fileID: 0}
   speed: 5
-  walkradius: 100
+  walkradius: 30
   CurrentActivity: 0
 --- !u!135 &3698231604079385937
 SphereCollider:

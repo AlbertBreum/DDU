@@ -33,6 +33,7 @@ public class NPCSpawner : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //points = GetComponent<Human>().Plague;
         //patientZero = Random.Range(0,numberOfNPCs);
+        
 
 
 
@@ -93,5 +94,8 @@ public class NPCSpawner : MonoBehaviour
 
 
     }
- 
+    private void Update()
+    {
+        RandomNavMeshLocation();
+    }
 }

@@ -816,33 +816,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &637646737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
-    type: 3}
-  m_PrefabInstance: {fileID: 4884935133084515033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &637646747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637646737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12be223924b5804ab7b4322818b4fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nearbyHumans: []
-  radiusOfInfection: 0
-  wealth: 10
-  activeDisease: 0
-  currentState: 0
-  Age: 0
-  covid: {fileID: 0}
-  Plague: {fileID: 0}
-  Smallpox: {fileID: 0}
 --- !u!1 &637949994
 GameObject:
   m_ObjectHideFlags: 0
@@ -6721,13 +6694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581071f4803366a4995e963268c45d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 637646737}
+  npcPrefab: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
+    type: 3}
   speed: 5
   walkradius: 100
-  points:
-  - {fileID: 345631051}
-  - {fileID: 670661900}
-  - {fileID: 895663167}
+  points: []
   numberOfNPCs: 100
   spawnRadius: 25
 --- !u!4 &1591080309
@@ -7451,11 +7422,7 @@ PrefabInstance:
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 637646747}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e998c83c08970409b3718ff6303625, type: 3}
 --- !u!1001 &8995688572707996857
 PrefabInstance:
