@@ -15,7 +15,7 @@ public class NPCBehavior : MonoBehaviour
     public List<Transform> points = new List<Transform>();
     //private int posIndex = 0;
     public DagNatCyclus timer;
-    [Range(0, 100)] public float speed;
+    [Range(5, 100)] public float speed;
     [Range(1, 500)] public float walkradius;
 
     bool IsWorking = false;

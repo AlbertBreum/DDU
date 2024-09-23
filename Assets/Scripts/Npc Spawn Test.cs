@@ -12,7 +12,7 @@ public class NPCSpawner : MonoBehaviour
     public GameObject npcPrefab;
 
     //Vector3[] npcPoints;
-    [Range(0, 100)] public float speed;
+    [Range(5, 100)] public float speed;
     [Range(1, 500)] public float walkradius;
     private NavMeshAgent agent;
     public List<Transform> points = new List<Transform>();

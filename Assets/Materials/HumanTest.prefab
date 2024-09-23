@@ -223,7 +223,7 @@ MonoBehaviour:
   currentState: 0
   Age: 0
   covid: {fileID: 0}
-  Plague: {fileID: 0}
+  Plague: {fileID: 4767161507940880175}
   Smallpox: {fileID: 0}
 --- !u!1 &7954532073966355556
 GameObject:
