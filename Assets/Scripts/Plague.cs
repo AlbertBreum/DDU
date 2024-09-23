@@ -14,6 +14,7 @@ public class Plague : MonoBehaviour
     {
         plagueParticles = GetComponent<Human>().Plague;
         plagueParticles.Play();
+
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Plague : MonoBehaviour
         float n = Random.Range(1, 100000);
         if (n <= 5*plagueTime)
         {
-            plagueParticles.Stop();
+            //plagueParticles.Stop();
             infectedHuman.activeDisease = Disease.None;
             infectedHuman.currentState = State.Incubation;
             
