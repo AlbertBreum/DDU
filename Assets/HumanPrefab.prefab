@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 314382932542943937}
   - component: {fileID: 7818098789467023435}
   - component: {fileID: 2379972141904479558}
+  - component: {fileID: 8169840618744152612}
   m_Layer: 0
   m_Name: HumanPrefab
   m_TagString: human
@@ -204,6 +205,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8169840618744152612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296628467909873957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12be223924b5804ab7b4322818b4fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearbyHumans: []
+  radiusOfInfection: 0
+  wealth: 10
+  activeDisease: 0
+  currentState: 0
+  Age: 0
+  covid: {fileID: 0}
+  Plague: {fileID: 0}
+  Smallpox: {fileID: 0}
 --- !u!1 &3730238167465771867
 GameObject:
   m_ObjectHideFlags: 0
