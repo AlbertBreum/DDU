@@ -29,6 +29,7 @@ public class NPCBehavior : MonoBehaviour
 
     void Start()
     {
+        plagueParticles = GetComponent<Human>().Plague;
         timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
         agent = GetComponent<NavMeshAgent>();
         Invoke(nameof(moveOnTime), 0f);
@@ -37,6 +38,7 @@ public class NPCBehavior : MonoBehaviour
         {
             agent.speed = speed;
         }
+        plagueParticles.Stop();
     }
     public Vector3 RandomNavMeshLocation()
     {
@@ -67,7 +69,7 @@ public class NPCBehavior : MonoBehaviour
         {
             //agent.SetDestination(points[0].position);
             CurrentActivity = Activity.Work;
-            //plagueParticles.Start();
+            
             //Debug.Log("Stopped particles");
         }
         else if (timer.currentTimeOfDay >= 18f && timer.currentTimeOfDay < 30f)
@@ -84,7 +86,7 @@ public class NPCBehavior : MonoBehaviour
              
              //Debug.Log("Started particles");
              CurrentActivity = Activity.Asleep;
-            //plagueParticles.Stop();
+            
          }
         agent.isStopped = false;
         
@@ -124,6 +126,7 @@ public class NPCBehavior : MonoBehaviour
         if (agent != null && agent.remainingDistance <= StoppingDistance)
         {
             agent.SetDestination(RandomNavMeshLocation());
+            
         }
         
 
@@ -140,6 +143,7 @@ public class NPCBehavior : MonoBehaviour
                 agent.SetDestination(RandomNavMeshLocation());
                 
                 Debug.Log("Once");
+                
             }
             
 
@@ -163,6 +167,7 @@ public class NPCBehavior : MonoBehaviour
             if (agent != null && agent.remainingDistance <= StoppingDistance)
             {
                 agent.SetDestination(RandomNavMeshLocation());
+                    
             }
         }
        
