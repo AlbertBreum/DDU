@@ -42,7 +42,7 @@ public class Plague : MonoBehaviour
             float num = Random.Range(0f, 1f);
             float r = Vector3.Magnitude(infectedHuman.transform.position-human.transform.position);
 
-            if (num/2500 > InfectionChance(r) && human.GetComponent<Plague>() == null)
+            if (num/2000 > InfectionChance(r) && human.GetComponent<Plague>() == null)
             {
                 //human.activeDisease = anyDisease;
                 //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;

@@ -6666,7 +6666,7 @@ MonoBehaviour:
   speed: 5
   walkradius: 100
   points: []
-  numberOfNPCs: 250
+  numberOfNPCs: 1000
   spawnRadius: 40
 --- !u!4 &1591080309
 Transform:
