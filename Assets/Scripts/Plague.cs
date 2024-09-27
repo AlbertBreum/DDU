@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Plague : MonoBehaviour
 {
-    public int radiusOfInfection = 2;
+    public float radiusOfInfection = 0.5f;
     private Human infectedHuman;
     private float plagueTime;
     ParticleSystem plagueParticles;
