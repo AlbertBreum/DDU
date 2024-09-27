@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public enum State
+/* public enum State
 {
     Healthy,
     Incubation,
@@ -24,14 +24,14 @@ public enum Gender
 {
     Male,
     Female
-}
+} */
 
 public class Human : MonoBehaviour
 {
     public List<Human> nearbyHumans = new List<Human>(); //Opretter en liste til at holde styr på mennesker indenfor smitteradius
     public float radiusOfInfection;
     public int wealth = 10;
-    public Disease activeDisease;
+    //public Disease activeDisease;
     public State currentState;
     public int Age;
 
@@ -63,7 +63,8 @@ public class Human : MonoBehaviour
         }
     }
 
-    void InfectOthers(Disease anyDisease)
+    //Flyttet til Plague scriptet nu
+    /* void InfectOthers() //Infekterer med pesten
     {
         float InfectionChance(float r)
         {
@@ -80,12 +81,12 @@ public class Human : MonoBehaviour
             float r = 5.0f;
             if (num > InfectionChance(r))
             {
-                human.activeDisease = anyDisease;
+                //human.activeDisease = anyDisease;
                 //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
                 Plague p = human.AddComponent<Plague>();
             }
         }
-    }
+    } */
 
 
 

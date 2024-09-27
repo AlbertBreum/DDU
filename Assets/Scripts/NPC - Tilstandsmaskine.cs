@@ -142,7 +142,6 @@ public class NPCBehavior : MonoBehaviour
             {
                 agent.SetDestination(RandomNavMeshLocation());
                 
-                Debug.Log("Once");
                 
             }
             

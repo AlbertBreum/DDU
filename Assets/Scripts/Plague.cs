@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class Plague : MonoBehaviour
 {
-    public float radiusOfInfection = 0.5f;
+    public float radiusOfInfection = 2f;
     private Human infectedHuman;
     private float plagueTime;
     ParticleSystem plagueParticles;
@@ -15,13 +16,15 @@ public class Plague : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        infectedHuman = GetComponent<Human>();
         nearbyHumans = GetComponent<Human>().nearbyHumans;
         plagueParticles = GetComponent<Human>().Plague;
         plagueParticles.Play();
+        GetComponent<Renderer>().material.color = Color.green;
 
     }
 
-    void InfectOthers() //Infekterer med pesten
+    void InfectOthers() //Inficerer med pesten
     {
         float InfectionChance(float r)
         {
@@ -32,13 +35,18 @@ public class Plague : MonoBehaviour
 
         foreach (Human human in nearbyHumans)
         {
+            if (human == null)
+            {
+                continue;
+            }
             float num = Random.Range(0f, 1f);
-            float r = 5.0f;
-            if (num > InfectionChance(r))
+            float r = Vector3.Magnitude(infectedHuman.transform.position-human.transform.position);
+
+            if (num/1000 > InfectionChance(r) && human.GetComponent<Plague>() == null)
             {
                 //human.activeDisease = anyDisease;
                 //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
-                Debug.Log("Human " + human + " is infected!");
+                Debug.Log("Human " + human + " has been infected!");
                 Plague p = human.AddComponent<Plague>();
             }
         }
@@ -64,17 +72,22 @@ public class Plague : MonoBehaviour
             //plagueParticles.Stop();
             //infectedHuman.activeDisease = Disease.None;
             //infectedHuman.currentState = State.Incubation;
-            
+            Debug.Log("I've just been cured!");
+            plagueParticles.Stop();
+            GetComponent<Renderer>().material.color = Color.red;
+            Destroy(GetComponent<Plague>());
+
         }
     }
 
     void Die()
     {
         float n = Random.Range(1, 100000);
-        if (n <= 120 + plagueTime)
+        if (n <= 40 + plagueTime)
         {
+            Debug.Log("I've been killed by the Plague!");
             plagueParticles.Stop();
-            Destroy(infectedHuman);
+            Destroy(infectedHuman.gameObject);
         }
     }
 }
