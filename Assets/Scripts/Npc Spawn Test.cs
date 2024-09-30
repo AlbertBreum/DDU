@@ -8,6 +8,8 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
 public class NPCSpawner : MonoBehaviour
 {
     // Reference til din NPC prefab
@@ -19,10 +21,12 @@ public class NPCSpawner : MonoBehaviour
     private NavMeshAgent agent;
     public List<Transform> points = new List<Transform>();
     // Antal NPC'er du vil spawne
-    public int numberOfNPCs = 100;
+    public const int numberOfNPCs = 50;
     // Spawn radius
     public float spawnRadius = 10f;
     //int patientZero;
+
+    public const int PATIENT_ZERO_COUNT = 5;
 
     void Start()
     {
@@ -49,6 +53,8 @@ public class NPCSpawner : MonoBehaviour
     // Funktion til at spawne NPC'er
     void SpawnNPCs()
     {
+        List<int> patientZeros = PatientZeros();
+
         for (int i = 0; i < numberOfNPCs; i++)
         {
             // Beregn en tilfældig position inden for en cirkel
@@ -62,7 +68,7 @@ public class NPCSpawner : MonoBehaviour
             newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
                                        // newNPC.poin
 
-            if (i == 0)
+            if (patientZeros.Contains(i))
             {
                 newNPC.AddComponent<Plague>();
             }
@@ -97,20 +103,29 @@ public class NPCSpawner : MonoBehaviour
     }
 
 
-    private void PatientZeros(int num)
+
+    public static List<int> PatientZeros()
     {
-        List<int> numberList = new List<int>();
+        List<int> numbers = new List<int>();
 
-        int numOfInts = 5;
+        // Fyld listen med værdier fra min til max
+        for (int i = 0; i <= numberOfNPCs; i++)
+        {
+            numbers.Add(i);
+        }
 
+        // Shuffle listen
+        for (int i = numbers.Count - 1; i > 0; i--)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
+            int temp = numbers[i];
+            numbers[i] = numbers[randomIndex];
+            numbers[randomIndex] = temp;
+        }
 
-        int randomInt = UnityEngine.Random.Range(1, 10);
-        Debug.Log("Random integer: " + randomInt);
-
-
+        // Returnér de første 'count' elementer
+        return numbers.GetRange(0, PATIENT_ZERO_COUNT);
     }
-
-
 
 
 
