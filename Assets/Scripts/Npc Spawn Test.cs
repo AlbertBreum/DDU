@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +27,9 @@ public class NPCSpawner : MonoBehaviour
     void Start()
     {
         SpawnNPCs();
-        /*Vector3 P1 = new Vector3(1, 1, 1);
-        Vector3 P2 = new Vector3(1, 2, 3);
-
-        npcPoints.Append(P1);
-        npcPoints.Append(P2);*/
         agent = GetComponent<NavMeshAgent>();
         //points = GetComponent<Human>().Plague;
         //patientZero = Random.Range(0,numberOfNPCs);
-        
 
 
 
@@ -41,7 +37,7 @@ public class NPCSpawner : MonoBehaviour
     public Vector3 RandomNavMeshLocation()
     {
         Vector3 FinalPosition = Vector3.zero;
-        Vector3 RandomPostion = Random.insideUnitSphere * walkradius;
+        Vector3 RandomPostion = UnityEngine.Random.insideUnitSphere * walkradius;
         RandomPostion += transform.position;
         if (NavMesh.SamplePosition(RandomPostion, out NavMeshHit Hit, walkradius, 1))
         {
@@ -56,7 +52,7 @@ public class NPCSpawner : MonoBehaviour
         for (int i = 0; i < numberOfNPCs; i++)
         {
             // Beregn en tilfældig position inden for en cirkel
-            Vector3 randomPosition = transform.position + Random.insideUnitSphere * spawnRadius;
+            Vector3 randomPosition = transform.position + UnityEngine.Random.insideUnitSphere * spawnRadius;
             randomPosition.y = 0; // Holder NPC'er på jorden, hvis du arbejder i 2D eller på en flad overflade
 
             // Instantiér NPC ved den tilfældige position
@@ -73,8 +69,8 @@ public class NPCSpawner : MonoBehaviour
 
             //if (i == patientZero)
             //{
-              //  newNPC.AddComponent<Plague>();
-                //Debug.Log("Patient zero: " + patientZero);
+            //  newNPC.AddComponent<Plague>();
+            //Debug.Log("Patient zero: " + patientZero);
             //}
 
 
@@ -94,8 +90,29 @@ public class NPCSpawner : MonoBehaviour
 
 
     }
+
     private void Update()
     {
         RandomNavMeshLocation();
     }
+
+
+    private void PatientZeros(int num)
+    {
+        List<int> numberList = new List<int>();
+
+        int numOfInts = 5;
+
+
+        int randomInt = UnityEngine.Random.Range(1, 10);
+        Debug.Log("Random integer: " + randomInt);
+
+
+    }
+
+
+
+
+
+
 }
