@@ -12,6 +12,8 @@ public class Plague : MonoBehaviour
     private float plagueTime;
     ParticleSystem plagueParticles;
     public List<Human> nearbyHumans;
+    public float immunityTime = 60f; //Immunitetstiden, som default er 60 sekunder
+    public DagNatCyclus timer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class Plague : MonoBehaviour
         plagueParticles = GetComponent<Human>().Plague;
         plagueParticles.Play();
         GetComponent<Renderer>().material.color = Color.green;
-
+        timer = GameObject.Find("CyklusController").GetComponent<DagNatCyclus>();
     }
 
     void InfectOthers() //Inficerer med pesten
@@ -30,7 +32,7 @@ public class Plague : MonoBehaviour
         {
             float risk;
             risk = Mathf.Exp(-Mathf.Pow(r, 2) / radiusOfInfection);
-            return risk;
+            return risk/500;
         }
 
         foreach (Human human in nearbyHumans)
@@ -39,10 +41,12 @@ public class Plague : MonoBehaviour
             {
                 continue;
             }
-            float num = Random.Range(0f, 1f);
             float r = Vector3.Magnitude(infectedHuman.transform.position-human.transform.position);
-
-            if (num/2000 > InfectionChance(r) && human.GetComponent<Plague>() == null)
+            float time = Time.time;
+            float infectionChance = InfectionChance(r); //Stor afstand = stort tal, lille afstand = lille værdi
+            float num = Random.Range(0f, 1f); //Stor max-værdi for stor afstand
+            //Lille afstand gør, at num får en meget begrænset størrelse og nemmere kan komme under tærskelværdien
+            if (num < infectionChance && human.GetComponent<Plague>() == null && time > human.timeStamp + immunityTime) //Der skal gå 40 sekunder fra immunitetstiden
             {
                 //human.activeDisease = anyDisease;
                 //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
@@ -66,8 +70,8 @@ public class Plague : MonoBehaviour
 
     void CureDisease()
     {
-        float n = Random.Range(1, 100000);
-        if (n <= 2*plagueTime)
+        float n = Random.Range(1, 1000000);
+        if (n <= plagueTime)
         {
             //plagueParticles.Stop();
             //infectedHuman.activeDisease = Disease.None;
@@ -76,14 +80,14 @@ public class Plague : MonoBehaviour
             plagueParticles.Stop();
             GetComponent<Renderer>().material.color = Color.red;
             Destroy(GetComponent<Plague>());
-
+            infectedHuman.timeStamp = Time.time; //Immunitetstiden opdateres
         }
     }
 
     void Die()
     {
-        float n = Random.Range(1, 100000);
-        if (n <= 40 + plagueTime)
+        float n = Random.Range(1, 1000000);
+        if (n <= 10+Mathf.Pow(plagueTime/10, 2))
         {
             Debug.Log("I've been killed by the Plague!");
             plagueParticles.Stop();

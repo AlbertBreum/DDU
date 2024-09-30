@@ -39,10 +39,13 @@ public class Human : MonoBehaviour
     public ParticleSystem Plague;
     public ParticleSystem Smallpox;
 
+    public float timeStamp;
+
 
     void Start()
     {
         //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
+        timeStamp = -60f;
     }
     private void OnTriggerEnter(Collider other) //Detekterer, at et menneske kommer indenfor en given radius
     {
