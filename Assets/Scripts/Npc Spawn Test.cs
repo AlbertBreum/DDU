@@ -21,7 +21,7 @@ public class NPCSpawner : MonoBehaviour
     private NavMeshAgent agent;
     public List<Transform> points = new List<Transform>();
     // Antal NPC'er du vil spawne
-    public const int numberOfNPCs = 0;
+    public const int numberOfNPCs = 100;
     // Spawn radius
     public float spawnRadius = 10f;
     //int patientZero;
