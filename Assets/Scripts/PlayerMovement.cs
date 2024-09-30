@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5f;
     private Rigidbody rb;
     public GameObject targetObject;  // Det GameObject som har scriptet, der skal fjernes
-
+    public NPCSpawner spawner;
+    public float radius = 5f;
+    public Transform player;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,26 +32,27 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        if (Input.GetMouseButtonDown(1))  // 1 betyder højre museknap
+        if (Input.GetMouseButtonDown(0))  // 0 = Mouse0 (venstre museknap)
         {
-            if (targetObject != null)
+            // Gå igennem alle de spawnede objekter
+            foreach (GameObject spawnedObject in spawner.spawnedObjects)
             {
-                // Find det script på targetObject, som du vil fjerne
-                var script = targetObject.GetComponent<Plague>();  // Udskift PlayerMovement med det script, du vil fjerne
-                if (script != null)
+                // Beregn afstanden fra spilleren til det spawnede objekt
+                float distance = Vector3.Distance(player.position, spawnedObject.transform.position);
+
+                // Hvis afstanden er mindre end radiusen, fjern PlayerMovement scriptet
+                if (distance <= radius)
                 {
-                    // Fjern scriptet
-                    Destroy(script);
-                    Debug.Log("Script fjernet fra " + targetObject.name);
-                }
-                else
-                {
-                    Debug.Log("Scriptet findes ikke på " + targetObject.name);
+                    var script = spawnedObject.GetComponent<Plague>();
+                    if (script != null)
+                    {
+                        Destroy(script);  // Fjern scriptet
+                        Debug.Log("Script fjernet fra " + spawnedObject.name + " inden for radiusen.");
+                    }
                 }
             }
         }
     }
-
     // Check om spilleren står på jorden
     private bool IsGrounded()
     {
