@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5f;
     private Rigidbody rb;
     public GameObject targetObject;  // Det GameObject som har scriptet, der skal fjernes
-    public MonoBehaviour Plague;  // Referencen til det script, der skal fjernes
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -32,11 +32,20 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))  // 1 betyder højre museknap
         {
-            if (targetObject != null && Plague != null)
+            if (targetObject != null)
             {
-                // Fjern scriptet fra targetObject
-                Destroy(Plague);
-                Debug.Log("Script fjernet fra " + targetObject.name);
+                // Find det script på targetObject, som du vil fjerne
+                var script = targetObject.GetComponent<Plague>();  // Udskift PlayerMovement med det script, du vil fjerne
+                if (script != null)
+                {
+                    // Fjern scriptet
+                    Destroy(script);
+                    Debug.Log("Script fjernet fra " + targetObject.name);
+                }
+                else
+                {
+                    Debug.Log("Scriptet findes ikke på " + targetObject.name);
+                }
             }
         }
     }
