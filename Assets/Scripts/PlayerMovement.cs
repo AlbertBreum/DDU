@@ -35,15 +35,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))  // 0 = Mouse0 (venstre museknap)
         {
             // Gå igennem alle de spawnede objekter
-            foreach (GameObject spawnedObject in spawner.spawnedObjects)
+            foreach (GameObject spawnedObject in spawner.spawnedNPCs)
             {
                 // Beregn afstanden fra spilleren til det spawnede objekt
                 float distance = Vector3.Distance(player.position, spawnedObject.transform.position);
-
+                
                 // Hvis afstanden er mindre end radiusen, fjern PlayerMovement scriptet
                 if (distance <= radius)
                 {
                     var script = spawnedObject.GetComponent<Plague>();
+                    Debug.Log(script.ToString());
                     if (script != null)
                     {
                         Destroy(script);  // Fjern scriptet

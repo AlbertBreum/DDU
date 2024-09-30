@@ -20,7 +20,7 @@ public class NPCSpawner : MonoBehaviour
     [Range(1, 500)] public float walkradius;
     private NavMeshAgent agent;
     public List<Transform> points = new List<Transform>();
-    public List<GameObject> spawnedObjects = new List<GameObject>();
+    public List<GameObject> spawnedNPCs = new List<GameObject>();
     // Antal NPC'er du vil spawne
     public const int numberOfNPCs = 100;
     // Spawn radius
@@ -68,7 +68,7 @@ public class NPCSpawner : MonoBehaviour
             // Eventuelle tilpasninger på de instancerede NPC'er kan foretages her
             newNPC.name = "NPC_" + i;  // For at give hver NPC et unikt navn
                                        // newNPC.poin
-
+            spawnedNPCs.Add(newNPC);
             if (patientZeros.Contains(i))
             {
                 newNPC.AddComponent<Plague>();

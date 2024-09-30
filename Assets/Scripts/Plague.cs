@@ -59,7 +59,7 @@ public class Plague : MonoBehaviour
             {
                 //human.activeDisease = anyDisease;
                 //Plague sc = gameObject.AddComponent(typeof(Plague)) as Plague;
-                Debug.Log("Human " + human + " has been infected!");
+                //Debug.Log("Human " + human + " has been infected!");
                 Plague p = human.AddComponent<Plague>();
             }
         }
@@ -86,7 +86,7 @@ public class Plague : MonoBehaviour
             //plagueParticles.Stop();
             //infectedHuman.activeDisease = Disease.None;
             //infectedHuman.currentState = State.Incubation;
-            Debug.Log("I've just been cured!");
+            //Debug.Log("I've just been cured!");
             plagueParticles.Stop();
             GetComponent<Renderer>().material.color = Color.red;
             Destroy(GetComponent<Plague>());

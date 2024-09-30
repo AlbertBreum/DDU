@@ -6207,12 +6207,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1018061673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
-    type: 3}
-  m_PrefabInstance: {fileID: 4884935133084515033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175709537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6687,6 +6681,7 @@ MonoBehaviour:
   speed: 5
   walkradius: 100
   points: []
+  spawnedNPCs: []
   spawnRadius: 40
 --- !u!4 &1591080309
 Transform:
@@ -6906,7 +6901,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   jumpForce: 5
-  targetObject: {fileID: 1018061673}
+  targetObject: {fileID: 7221940819828347437, guid: 84e998c83c08970409b3718ff6303625,
+    type: 3}
+  spawner: {fileID: 1591080308}
+  radius: 5
+  player: {fileID: 525723455}
 --- !u!1 &1702975942
 GameObject:
   m_ObjectHideFlags: 0
