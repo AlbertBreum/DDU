@@ -133,7 +133,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!54 &1761287831828700196
 Rigidbody:
@@ -220,12 +220,11 @@ MonoBehaviour:
   nearbyHumans: []
   radiusOfInfection: 0
   wealth: 10
-  activeDisease: 0
-  currentState: 0
   Age: 0
   covid: {fileID: 0}
   Plague: {fileID: 4767161507940880175}
   Smallpox: {fileID: 0}
+  timeStamp: 0
 --- !u!1 &7954532073966355556
 GameObject:
   m_ObjectHideFlags: 0

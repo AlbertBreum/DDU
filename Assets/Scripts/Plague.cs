@@ -10,7 +10,7 @@ public class Plague : MonoBehaviour
     public float radiusOfInfection = 2f;
     private Human infectedHuman;
     private float plagueTime;
-    ParticleSystem plagueParticles;
+    public ParticleSystem plagueParticles;
     public List<Human> nearbyHumans;
     public float immunityTime = 30f; //Immunitetstiden, som default er 30 sekunder
     public DagNatCyclus timer;
